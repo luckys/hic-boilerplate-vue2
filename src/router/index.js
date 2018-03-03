@@ -14,7 +14,8 @@ const router = createRouter()
 function createRouter() {
   const router = new Router({
     mode: 'history',
-    routes
+    routes,
+    scrollBehavior
   })
 
   router.beforeEach(beforeEach)
@@ -30,7 +31,7 @@ function createRouter() {
  * @param {Route} from
  * @param {Function} next
  */
-async function beforeEach (to, from, next) {
+async function beforeEach(to, from, next) {
 
   // Get the middlewares for all the matched routes.
   const middlewares = getMiddleware(to)
@@ -48,7 +49,7 @@ async function beforeEach (to, from, next) {
  * @param {Route} from
  * @param {Function} next
  */
-async function afterEach (to, from, next) {
+async function afterEach(to, from, next) {
   await router.app.$nextTick()
 }
 
@@ -115,6 +116,34 @@ function resolveMiddleware(requireContext) {
     .reduce((guards, [name, guard]) => (
       {...guards, [name]: guard.default}
     ), {})
+}
+
+/**
+ * Scroll Behavior
+ *
+ * @link https://router.vuejs.org/en/advanced/scroll-behavior.html
+ *
+ * @param  {Route} to
+ * @param  {Route} from
+ * @param  {Object|undefined} savedPosition
+ * @return {Object}
+ */
+function scrollBehavior(to, from, savedPosition) {
+  if (savedPosition) {
+    return savedPosition
+  }
+
+  if (to.hash) {
+    return {selector: to.hash}
+  }
+
+  const [component] = router.getMatchedComponents({...to}).slice(-1)
+
+  if (component && component.scrollToTop === false) {
+    return {}
+  }
+
+  return {x: 0, y: 0}
 }
 
 export default router
