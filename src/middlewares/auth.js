@@ -1,6 +1,7 @@
-const auth = true
-export default async (to, from, next) => {
-  if (auth) {
+import store from '@/store'
+
+export default (to, from, next) => {
+  if (store.getters.token) {
     next()
   } else {
     next({name: 'Login'})

@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import router from './router'
+import store from './store'
 import { VueExtendLayout, layout } from 'vue-extend-layout'
 
 Vue.use(VueExtendLayout)
@@ -12,5 +13,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   ...layout
 })

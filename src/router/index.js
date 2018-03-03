@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routes'
+import store from '@/store'
+import { sync } from 'vuex-router-sync'
 
 Vue.use(Router)
 
@@ -10,6 +12,8 @@ const routeMiddleware = resolveMiddleware(
 )
 
 const router = createRouter()
+
+sync(store, router)
 
 function createRouter() {
   const router = new Router({

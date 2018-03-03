@@ -22,7 +22,7 @@ export default [
     component: () => import('@/pages/Dashboard'),
     meta: {
       layout: 'App',
-      middleware: ['auth', 'admin']
+      middleware: ['auth']
     }
   },
   {
