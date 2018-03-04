@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h1>Home</h1>
+    <Welcome />
   </div>
 </template>
 
 <script>
-  //import HelloWorld from '@/components/HelloWorld'
+  import Welcome from '@/components/Welcome'
 
   export default {
-    name: 'Home'
-    //components: {HelloWorld}
+    name: 'Home',
+    components: {Welcome}
   }
 </script>

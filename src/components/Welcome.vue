@@ -1,18 +1,12 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
+    <h1>{{ $t('home_page') }}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-
-  data () {
-    return {
-      msg: 'Welcome to Home Page'
-    }
-  }
+  name: 'Welcome'
 }
 </script>
 
