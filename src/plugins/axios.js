@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'https://api.example.com';
 
 // Request interceptor
 axios.interceptors.request.use(request => {
-  const token = store.getters.token
+  const token = store.getters['auth/token']
   if (token) {
     request.headers.common['Authorization'] = `Bearer ${token}`
   }

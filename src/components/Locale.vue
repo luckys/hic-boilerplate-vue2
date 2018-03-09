@@ -15,14 +15,14 @@
 		name: "Locale",
 
     computed: {
-      ...mapGetters([
+      ...mapGetters('lang', [
         'locale',
         'locales',
       ])
     },
 
     methods: {
-      ...mapActions([
+      ...mapActions('lang', [
         'setLocale'
       ]),
 
